@@ -1,0 +1,14 @@
+.stadium{
+    background-image: url('/images/stadium_background.webp');
+}
+
+.blackcard{
+    background-image: url('/images/blackcard.png');
+    background-size: 110px;
+}
+
+.goldcard{
+    background-image: url('/images/badge_gold.webp');
+    background-size: 130px;
+}
+
