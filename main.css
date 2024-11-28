@@ -1,5 +1,8 @@
 .stadium{
     background-image: url('/images/stadium_background.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .blackcard{

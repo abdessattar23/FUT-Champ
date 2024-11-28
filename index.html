@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.js"></script>
     <title>Squad Elite FUT | Squad Builder</title>
     <link rel="stylesheet" href="main.css">
 </head>
@@ -18,7 +18,7 @@
     </header>
 
     <div class="flex gap-16 flex-col md:flex-row xl:gap-28">
-        <section class="stadium h-screen bg-no-repeat ml-10 mt-6">
+        <section class="stadium h-screen bg-no-repeat w-7/12 ml-10 mt-6">
 
             <div id="attackers" class="flex items-start justify-center gap-14">
                 <div id="LW"
@@ -55,9 +55,10 @@
                 </div>
                 <div id="CM"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
-                    position="CM">
+                    position="RCM">
                     <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
                         class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
+                        
                 </div>
                 <div id="RCM"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
@@ -75,13 +76,13 @@
                 </div>
                 <div id="LCB"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button"
-                    position="CB">
+                    position="LCB">
                     <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
                         class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
                 </div>
                 <div id="RCB"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button"
-                    position="CB">
+                    position="RCB">
                     <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
                         class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
                 </div>
@@ -101,33 +102,29 @@
             </div>
 
         </section>
-        <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl ">
-            <form class="max-w-sm mx-auto">
-                <label for="formations"
-                    class="block mb-2 text-xl font-medium text-gray-900 dark:text-white font-sans">Formations</label>
-                <select id="Formations"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>4-3-3</option>
-                </select>
-            </form>
+        
+        <div class="mt-6 bg-[#1f1f1f] grid grid-cols-3 gap-5 p-4  max-h-screen overflow-y-scroll overflow-x-hidden" id="all"></div>
+        
+    </div>
+    <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl ">
+        <form class="max-w-sm mx-auto">
+            <label for="formations"
+                class="block mb-2 text-xl font-medium text-gray-900 dark:text-white font-sans">Formations</label>
+            <select id="Formations"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option selected>4-3-3</option>
+            </select>
+        </form>
 
-            <div class="flex gap-5 justify-center items-center mt-12">
-                <button id="addPlayer"
-                    class="bg-green-500 hover:bg-green-700 duration-200 px-11 py-3 rounded-full font-sans">Add Player</button>
-                <a href="/allPlayers.html">
-                    <button class="bg-green-500 hover:bg-green-700 duration-200 px-6 py-3 rounded-full font-sans">Show All Players</button>
-                </a>
-            </div>
+        <div class="flex gap-5 justify-center items-center mt-12">
+            <button id="addPlayer"
+                class="bg-green-500 hover:bg-green-700 duration-200 px-11 py-3 rounded-full font-sans">Add Player</button>
+            <a href="/allPlayers.html">
+                <button class="bg-green-500 hover:bg-green-700 duration-200 px-6 py-3 rounded-full font-sans">Show All Players</button>
+            </a>
         </div>
     </div>
-    <div class="ml-10 bg-[#1f1f1f] mt-2 flex gap-5 p-4 max-w-max">
-        <div class="cursor-pointer goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center"></div>
-        <div class="cursor-pointer goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center"></div>
-        <div class="cursor-pointer goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center"></div>
-        <div class="cursor-pointer goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center"></div>
-        <div class="cursor-pointer goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center"></div>
-        <div class="cursor-pointer goldcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center"></div>
-    </div>
+    
 
     <div id="Addplayermodal" class="fixed inset-0 hidden justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl ">
