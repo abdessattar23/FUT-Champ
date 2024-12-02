@@ -1,5 +1,5 @@
 let playersdata = new XMLHttpRequest();
-playersdata.open("GET", "/players.json", true);
+playersdata.open("GET", "./players.json", true);
 playersdata.send();
 
 playersdata.onreadystatechange = function () {
@@ -521,15 +521,12 @@ playersdata.onreadystatechange = function () {
       });
     });
 
-    // Get the position select element and stats containers
     const positionSelect = document.getElementById('Position');
     const gkStats = document.getElementById('gkStats');
     const playerStats = document.getElementById('playerStats');
 
-    // Add event listener to position select
     positionSelect.addEventListener('change', function () {
       if (this.value === 'GK') {
-        // Show goalkeeper stats, hide player stats
         gkStats.classList.remove('hidden');
         gkStats.classList.add('grid');
         if (playerStats) {
@@ -537,7 +534,6 @@ playersdata.onreadystatechange = function () {
           playerStats.classList.remove('grid');
         }
       } else {
-        // Show player stats, hide goalkeeper stats
         gkStats.classList.add('hidden');
         gkStats.classList.remove('grid');
         if (playerStats) {
@@ -547,7 +543,6 @@ playersdata.onreadystatechange = function () {
       }
     });
 
-    // Add event listener to form submission
     document.querySelector('.addnew').addEventListener('click', function () {
       const position = positionSelect.value;
       const playerData = {
@@ -562,7 +557,6 @@ playersdata.onreadystatechange = function () {
       };
 
       if (position === 'GK') {
-        // Add goalkeeper specific stats
         playerData.diving = document.getElementById('diving').value;
         playerData.handling = document.getElementById('handling').value;
         playerData.kicking = document.getElementById('kicking').value;
@@ -570,7 +564,6 @@ playersdata.onreadystatechange = function () {
         playerData.speed = document.getElementById('speed').value;
         playerData.positioning = document.getElementById('positioning').value;
       } else {
-        // Add outfield player stats
         playerData.pace = document.getElementById('pace').value;
         playerData.shooting = document.getElementById('shooting').value;
         playerData.passing = document.getElementById('passing').value;
@@ -579,37 +572,29 @@ playersdata.onreadystatechange = function () {
         playerData.physical = document.getElementById('physical').value;
       }
 
-      // Get existing players
       let existingPlayers = JSON.parse(localStorage.getItem('players')) || { players: [] };
 
       if (this.getAttribute("data-editing-player")) {
-        // Update existing player
         existingPlayers.players = existingPlayers.players.map(p =>
           p.name === this.getAttribute("data-editing-player") ? playerData : p
         );
-        // Reset button text and remove dataset
         this.textContent = 'Add Player';
         delete this.getAttribute("data-editing-player");
       } else {
-        // Add new player
         existingPlayers.players.push(playerData);
       }
 
-      // Save to localStorage
       localStorage.setItem('players', JSON.stringify(existingPlayers));
 
-      // Close modal and reset form
       document.getElementById('Addplayermodal').classList.add('hidden');
       document.getElementById('modalform').reset();
 
-      // Refresh the page to show updated list
       location.reload();
     });
 
-    // Make position slots droppable
     document.querySelectorAll('.position-button').forEach(positionSlot => {
       positionSlot.addEventListener('dragover', (e) => {
-        e.preventDefault(); // Allow drop
+        e.preventDefault();
         positionSlot.classList.add('border-2', 'border-green-500');
       });
 
@@ -621,10 +606,8 @@ playersdata.onreadystatechange = function () {
         e.preventDefault();
         positionSlot.classList.remove('border-2', 'border-green-500');
 
-        // Get dropped player data
         const playerData = JSON.parse(e.dataTransfer.getData('text/plain'));
 
-        // Update position slot with player card
         positionSlot.classList.remove("blackcard");
         positionSlot.classList.add("goldcard");
 
@@ -712,7 +695,6 @@ playersdata.onreadystatechange = function () {
           `;
         }
 
-        // Remove player from available players list
         data = data.filter(p => p.name !== playerData.name);
       });
     });
