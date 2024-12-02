@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="tailwind.js"></script>
-    <title>Squad Elite FUT | Squad Builder</title>
+    <title>FUT Champ Builder</title>
     <link rel="stylesheet" href="main.css">
 </head>
 
@@ -13,14 +13,14 @@
 
     <header class="bg-black flex justify-between px-6 md:px-16 py-6 items-center w-full">
         <a href="index.html">
-            <h1 alt="Logo" class="font-bold text-3xl"><span class="text-green-400">Squad</span> Builder</h1>
+            <h1 alt="Logo" class="font-bold text-3xl"><span class="text-green-400">FUT</span> Champ</h1>
         </a>
     </header>
 
-    <div class="flex gap-16 flex-col md:flex-row xl:gap-28">
-        <section class="stadium h-screen bg-no-repeat w-7/12 ml-10 mt-6">
+    <div class="flex gap-16 flex-row md:flex-col lg:flex-row xl:flex-row md:w-screen lg:w-screen xl:gap-28" id="breakpoint-parent">
+        <section class="stadium bg-no-repeat w-7/12 ml-10 md:w-full md:ml-0 lg:w-full xl:w-full mobile-lg:w-full mobile-sm:w-full mt-6">
 
-            <div id="attackers" class="flex items-start justify-center gap-14">
+            <div id="attackers" class="flex items-start justify-center gap-14 lg:gap-10">
                 <div id="LW"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
                     position="LW">
@@ -36,6 +36,7 @@
                         <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
                             class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
                     </div>
+
                 </div>
                 <div id="RW"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
@@ -46,28 +47,28 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center gap-14">
-                <div id="LCM"
+            <div id="second-line" class="flex items-center justify-center gap-14 lg:gap-10">
+                <div id="CM"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
                     position="CM">
                     <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
                         class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
                 </div>
-                <div id="CM"
+                <div id="LCM"
+                    class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
+                    position="LCM">
+                    <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
+                        class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
+
+                </div>
+                <div id="RCM"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
                     position="RCM">
                     <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
                         class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
-                        
-                </div>
-                <div id="RCM"
-                    class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button selected-position"
-                    position="CM">
-                    <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
-                        class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
                 </div>
             </div>
-            <div class="flex items-center justify-center gap-14">
+            <div class="flex items-center justify-center gap-14 lg:gap-10">
                 <div id="LB"
                     class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button"
                     position="LB">
@@ -93,7 +94,7 @@
                         class="mt-9 w-10 cursor-pointer bg-green-500 rounded-full hover:bg-green-700" alt="add">
                 </div>
             </div>
-            <div class="flex items-center justify-center gap-14">
+            <div class="flex items-center justify-center gap-14 lg:gap-10">
                 <div class="cursor-pointer blackcard bg-no-repeat bg-center bg-cover w-32 h-44 flex flex-col pt-8 items-center position-button"
                     position="GK">
                     <img src="/images/add_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg"
@@ -103,7 +104,9 @@
 
         </section>
         
-        <div class="mt-6 bg-[#1f1f1f] grid grid-cols-3 gap-5 p-4  max-h-screen overflow-y-scroll overflow-x-hidden" id="all"></div>
+        <div class="mt-6 bg-[#1f1f1f] grid grid-cols-3 gap-5 p-4  max-h-screen overflow-y-scroll overflow-x-hidden" id="all">
+            <h1 class='text-3xl hidden'>No Player</h1>
+        </div>
         
     </div>
     <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl ">
@@ -112,16 +115,16 @@
                 class="block mb-2 text-xl font-medium text-gray-900 dark:text-white font-sans">Formations</label>
             <select id="Formations"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option selected>4-3-3</option>
+                <option selected hidden>Default</option>
+                <option value="433">4-3-3</option>
+                <option value="442">4-4-2</option>
             </select>
         </form>
 
         <div class="flex gap-5 justify-center items-center mt-12">
             <button id="addPlayer"
                 class="bg-green-500 hover:bg-green-700 duration-200 px-11 py-3 rounded-full font-sans">Add Player</button>
-            <a href="/allPlayers.html">
-                <button class="bg-green-500 hover:bg-green-700 duration-200 px-6 py-3 rounded-full font-sans">Show All Players</button>
-            </a>
+            
         </div>
     </div>
     
@@ -129,44 +132,125 @@
     <div id="Addplayermodal" class="fixed inset-0 hidden justify-center items-center bg-black bg-opacity-50">
         <div class="bg-[#1f1f1f] p-6 mt-6 h-max shadow-2xl ">
             <form id="modalform" class="mx-auto">
-                <label class="block mb-2 font-medium text-gray-900 dark:text-white font-sans">Player Name :</label>
-                <input id="PlayerName"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Club Name :</label>
-                <input id="clubName"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Nationality :</label>
-                <input id="Nationality"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
-                <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Position :</label>
-                <select id="Position"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="SelectOne" disabled selected hidden>Please select position</option>
-                    <option value="GK">GK</option>
-                    <option value="LB">LB</option>
-                    <option value="CB">CB</option>
-                    <option value="RB">RB</option>
-                    <option value="CM">CM</option>
-                    <option value="LW">LW</option>
-                    <option value="RW">RW</option>
-                    <option value="ST">ST</option>
-                </select>
-                <div class="hidden grid-cols-2 gap-x-5">
+                <div class="grid grid-cols-2 gap-x-5">
                     <div>
-                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Pace :</label>
-                        <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <label class="block mb-2 font-medium text-gray-900 dark:text-white font-sans">Player Name :</label>
+                        <input id="PlayerName" type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block mb-2 font-medium text-gray-900 dark:text-white font-sans">Photo URL :</label>
+                        <input id="PlayerPhoto" type="url"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Club :</label>
+                        <input id="clubName" type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Club Logo URL :</label>
+                        <input id="clubLogo" type="url"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Nationality :</label>
+                        <input id="Nationality" type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Flag URL :</label>
+                        <input id="FlagUrl" type="url"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Rating :</label>
+                        <input id="Rating" type="number" min="1" max="99"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Position :</label>
+                        <select id="Position"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="SelectOne" disabled selected hidden>Please select position</option>
+                            <option value="GK">GK</option>
+                            <option value="LB">LB</option>
+                            <option value="LCB">LCB</option>
+                            <option value="RCB">RCB</option>
+                            <option value="RB">RB</option>
+                            <option value="LCM">LCM</option>
+                            <option value="CM">CM</option>
+                            <option value="RCM">RCM</option>
+                            <option value="LW">LW</option>
+                            <option value="ST">ST</option>
+                            <option value="RW">RW</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="gkStats" class="hidden grid-cols-2 gap-x-5">
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Diving :</label>
+                        <input type="number" id="diving" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">positioning :</label>
-                        <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Handling :</label>
+                        <input type="number" id="handling" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Kicking :</label>
+                        <input type="number" id="kicking" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Reflexes :</label>
+                        <input type="number" id="reflexes" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Speed :</label>
+                        <input type="number" id="speed" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Positioning :</label>
+                        <input type="number" id="positioning" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div id="playerStats" class="hidden grid-cols-2 gap-x-5">
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Pace :</label>
+                        <input type="number" id="pace" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Shooting :</label>
+                        <input type="number" id="shooting" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Passing :</label>
+                        <input type="number" id="passing" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Dribbling :</label>
+                        <input type="number" id="dribbling" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Defending :</label>
+                        <input type="number" id="defending" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block my-2 font-medium text-gray-900 dark:text-white font-sans">Physical :</label>
+                        <input type="number" id="physical" min="1" max="99" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                 </div>
 
                 <div class="flex gap-5 justify-center items-center mt-12">
-                    <button type="button" class="bg-green-500 hover:bg-green-700 duration-200 px-11 py-3 rounded-full font-sans cursor-pointer">Add Player</button>
+                    <button type="button" class="bg-green-500 hover:bg-green-700 duration-200 px-11 py-3 rounded-full font-sans cursor-pointer addnew">Add Player</button>
                     <button type="button" class="bg-[#f0f0f0] px-14 py-3 rounded-full font-sans text-black hover:bg-[#c2c2c2] duration-200 cursor-pointer" onclick="document.getElementById('Addplayermodal').classList.add('hidden')">Cancel</button>
                 </div>
 
