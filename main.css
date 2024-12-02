@@ -2,7 +2,7 @@ body{
   overflow-x: hidden;
 }
 .stadium{
-    background-image: url('/images/stadium_background.webp');
+    background-image: url('./images/stadium_background.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -10,12 +10,12 @@ body{
 }
 
 .blackcard{
-    background-image: url('/images/blackcard.png');
+    background-image: url('./images/blackcard.png');
     background-size: 110px;
 }
 
 .goldcard{
-    background-image: url('/images/badge_gold.webp');
+    background-image: url('./images/badge_gold.webp');
     background-size: 130px;
 }
 
